@@ -25,4 +25,5 @@ urlpatterns = [
     path('orders/', include('orders.urls')),
     path('reviews/', include('reviews.urls')),
     path('', accounts_views.home, name='home'),
+    path("api/", include("store.api_urls")),
 ]

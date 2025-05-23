@@ -1,4 +1,4 @@
-#!/Users/siebrandkokke/ecommerce/venv/bin/python3.12
+#!/Users/siebrandkokke/Desktop/ecommerce_project/venv/bin/python3.12
 # -*- coding: utf-8 -*-
 import re
 import sys

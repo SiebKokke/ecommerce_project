@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import StoreForm, ProductForm
 from .models import Store, Product
 from core.decorators import role_required
+from core.twitter_utils import post_tweet
 
 
 # The next classes are for the store management on vendor side.
@@ -23,11 +24,19 @@ def store_create(request):
     Creates a new store for the logged-in user.
     """
     if request.method == "POST":
-        form = StoreForm(request.POST)
+        form = StoreForm(request.POST, request.FILES)
         if form.is_valid():
             store = form.save(commit=False)
             store.owner = request.user
             store.save()
+            tweet_text = f"New store added: {store.name}\n{store.description}"
+            # No logo path since I could not access actual API
+            logo_path = (
+                store.logo.path if (
+                    hasattr(store, "logo") and store.logo
+                ) else None
+            )
+            post_tweet(tweet_text, logo_path)
             return redirect("store_list")
     else:
         form = StoreForm()
@@ -87,13 +96,24 @@ def product_create(request, store_id):
     """
     This view allows the vendor to create a new product for their store.
     """
-    store = get_object_or_404(Store, pk=store_id, owner=request.user)
+    store = get_object_or_404(Store, id=store_id, owner=request.user)
     if request.method == "POST":
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save(commit=False)
             product.store = store
             product.save()
+            tweet_text = (
+                f"New product added in {product.store.name}!\n"
+                f"Product: {product.name}\n"
+                f"{product.description}"
+            )
+            image_path = (
+                product.image.path
+                if hasattr(product, "image") and product.image
+                else None
+            )
+            post_tweet(tweet_text, image_path)
             return redirect("product_list", store_id=store.pk)
     else:
         form = ProductForm()

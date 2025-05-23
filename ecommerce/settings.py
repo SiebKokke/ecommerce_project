@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     "store",
     "accounts",
     "orders",
-    "reviews"  # Custom app
+    "reviews",
+    "rest_framework",
 ]
 
 AUTH_USER_MODEL = "accounts.User"
