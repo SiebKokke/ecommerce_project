@@ -1,0 +1,28 @@
+<h1>{{ product.name }}</h1>
+<p>Description: {{ product.description }}</p>
+<p>Price: ${{ product.price }}</p>
+<p>Available: {{ product.inventory_count }}</p>
+<a href="javascript:history.back()">&#8592; Back</a>
+<h2>Reviews</h2>
+{% if reviews %}
+  <ul>
+    {% for review in reviews %}
+      <li>
+        <b>{{ review.user.username }}</b>:
+        {{ review.content }}<br>
+        {% if review.verified %}
+          <span style="color:green">Verified Purchase</span>
+        {% else %}
+          <span style="color:gray">Unverified</span>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No reviews yet.</p>
+{% endif %}
+
+{% if user.is_authenticated and user.role == "buyer" %}
+  <a href="{% url 'add_review' product.id %}">Add Review</a>
+  <a href="{% url 'product_catalog' %}">Back to All Products</a>
+{% endif %}

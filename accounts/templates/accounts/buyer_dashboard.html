@@ -1,0 +1,12 @@
+<h1>Buyer Dashboard</h1>
+<p>Welcome, {{ user.username }}!</p>
+
+<a href="{% url 'product_catalog' %}">Browse Products</a><br>
+<a href="{% url 'view_cart' %}">View Cart</a><br>
+
+<form action="{% url 'logout' %}" method="post" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" style="background:none; border:none; color:blue; text-decoration:underline; cursor:pointer;">
+        Logout
+    </button>
+</form>

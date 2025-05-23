@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products in {{ store.name }}</title>
+</head>
+<body>
+    <h1>Products in {{ store.name }}</h1>
+    <a href="{% url 'product_create' store.id %}">Add Product</a>
+    <ul>
+        {% for product in products %}
+            <li>
+                <strong>{{ product.name }}</strong> — {{ product.description }} — ${{ product.price }}  
+                (Inventory: {{ product.inventory_count }})
+                [<a href="{% url 'product_edit' store.id product.id %}">Edit</a>]
+                [<a href="{% url 'product_delete' store.id product.id %}">Delete</a>]
+            </li>
+        {% empty %}
+            <li>No products in this store yet.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'store_list' %}">Back to Stores</a>
+</body>
+</html>
+

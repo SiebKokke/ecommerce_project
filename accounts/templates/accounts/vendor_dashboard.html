@@ -1,0 +1,13 @@
+<h1>Vendor Dashboard</h1>
+<p>Welcome, {{ user.username }}!</p>
+
+<a href="{% url 'store_list' %}">My Stores</a><br>
+<a href="{% url 'store_create' %}">Create New Store</a><br>
+<a href="{% url 'product_catalog' %}">View All Products</a><br>
+
+<form action="{% url 'logout' %}" method="post" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" style="background:none; border:none; color:blue; text-decoration:underline; cursor:pointer;">
+        Logout
+    </button>
+</form>

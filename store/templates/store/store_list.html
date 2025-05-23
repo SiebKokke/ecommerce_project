@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Stores</title>
+</head>
+<body>
+    <h1>My Stores</h1>
+    <a href="{% url 'store_create' %}">Create New Store</a>
+    <ul>
+        {% for store in stores %}
+            <li>
+                <strong>{{ store.name }}</strong>
+                — {{ store.description }}
+                [<a href="{% url 'product_list' store.id %}">Manage Products</a>]
+                [<a href="{% url 'store_edit' store.id %}">Edit Store</a>]
+                [<a href="{% url 'store_delete' store.id %}">Delete Store</a>]
+            </li>
+        {% empty %}
+            <li>You have no stores yet.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'vendor_dashboard' %}">Back to Dashboard</a>
+</body>
+</html>

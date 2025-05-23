@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Cart</title>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <ul>
+        {% for item in cart_items %}
+            <li>
+                <strong>{{ item.product.name }}</strong> x {{ item.quantity }} — ${{ item.subtotal }}
+            </li>
+        {% empty %}
+            <li>Your cart is empty.</li>
+        {% endfor %}
+    </ul>
+    <p><strong>Total: ${{ total }}</strong></p>
+    {% if cart_items %}
+        <a href="{% url 'checkout' %}">Checkout</a>
+    {% endif %}
+</body>
+</html>
