@@ -1,3 +1,6 @@
+STEP 2 OF THE ECOMMERCE PROJECT WAS ALSO COMPLETED IN THIS REPO. PLEASE IGNORE THESE FILES (SERIALIZERS,TWITTER_UTILS) WHILE GRADING FOR ECOMMERCE 1.
+
+
 This is a Django-based e-commerce application that allows users to register as vendors or buyers. Vendors can create and manage stores, add/edit/delete products, and monitor their inventory. Buyers can browse all products, add items to a shopping cart, checkout, and receive an invoice by email.
 The platform supports verified/unverified product reviews, password reset via email, and uses session-based carts for buyers. User authentication and permissions are handled using Django’s built-in system with additional role-based access. MariaDB is used as the database backend.
 
