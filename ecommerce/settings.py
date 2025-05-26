@@ -47,8 +47,13 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = "accounts.User"
 
 # Email settings
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-DEFAULT_FROM_EMAIL = "no-reply@ecommerce.com"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "siebrandkokke64@gmail.com"
+EMAIL_HOST_PASSWORD = "wwru cjep hjpy nvdi"
+DEFAULT_FROM_EMAIL = "siebrandkokke64@gmail.com"
 
 # 1 hour password reset timeout
 PASSWORD_RESET_TIMEOUT = 60 * 60
