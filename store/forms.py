@@ -8,7 +8,7 @@ class StoreForm(forms.ModelForm):
     """
     class Meta:
         model = Store
-        fields = ["name", "description"]
+        fields = ["name", "description", "logo"]
 
 
 class ProductForm(forms.ModelForm):
@@ -17,4 +17,4 @@ class ProductForm(forms.ModelForm):
     """
     class Meta:
         model = Product
-        fields = ["name", "description", "price", "inventory_count"]
+        fields = ["name", "description", "price", "inventory_count", "image"]

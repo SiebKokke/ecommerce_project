@@ -18,6 +18,7 @@ class Store(models.Model):
         limit_choices_to={"role": "vendor"},
         related_name="stores"
     )
+    logo = models.ImageField(upload_to="store_logos/", blank=True, null=True)
 
     def __str__(self):
         """
@@ -40,6 +41,9 @@ class Product(models.Model):
         related_name="products"
     )
     inventory_count = models.PositiveIntegerField(default=0)
+    image = models.ImageField(
+        upload_to="product_images/", blank=True, null=True
+    )
 
     def __str__(self):
         """

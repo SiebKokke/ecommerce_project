@@ -30,7 +30,7 @@ def store_create(request):
             store.owner = request.user
             store.save()
             tweet_text = f"New store added: {store.name}\n{store.description}"
-            # No logo path since I could not access actual API
+            # logo path
             logo_path = (
                 store.logo.path if (
                     hasattr(store, "logo") and store.logo
